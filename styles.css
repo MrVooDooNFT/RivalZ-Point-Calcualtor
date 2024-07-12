@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+select, input, button {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    cursor: pointer;
+}

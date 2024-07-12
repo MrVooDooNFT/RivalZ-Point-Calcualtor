@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hardware Puan Hesaplayıcı</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Hardware Puan Hesaplayıcı</h1>
+    <form id="calcForm">
+        <label for="ramSpeed">RAM Hızı:</label>
+        <select name="ramSpeed" id="ramSpeed">
+            <option value="1600">1600</option>
+            <option value="2100">2100</option>
+            <option value="2400">2400</option>
+            <option value="3000">3000</option>
+            <option value="3200">3200</option>
+            <option value="3600">3600</option>
+            <option value="4000">4000</option>
+            <option value="4400">4400</option>
+            <option value="4800">4800</option>
+            <option value="5200">5200</option>
+            <option value="5600">5600</option>
+            <option value="6000">6000</option>
+            <option value="6400">6400</option>
+            <option value="6800">6800</option>
+            <option value="7200">7200</option>
+            <option value="7600">7600</option>
+            <option value="7800">7800</option>
+        </select>
+        <br>
+        <label for="ramCapacity">RAM Kapasitesi (GB):</label>
+        <select name="ramCapacity" id="ramCapacity">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="64">64</option>
+        </select>
+        <br>
+        <label for="hddType">HDD Tipi:</label>
+        <select name="hddType" id="hddType">
+            <option value="hdd">HDD</option>
+            <option value="ssd">SSD</option>
+            <option value="nvme">NVMe</option>
+        </select>
+        <br>
+        <label for="hddCapacity">HDD Kapasitesi (GB):</label>
+        <input type="number" id="hddCapacity" name="hddCapacity" min="0">
+        <br>
+        <label for="cpuCores">İşlemci Çekirdek Sayısı:</label>
+        <select name="cpuCores" id="cpuCores">
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+        </select>
+        <br>
+        <label for="cpuSpeed">İşlemci Hızı (GHz):</label>
+        <input type="number" id="cpuSpeed" name="cpuSpeed" step="0.1" min="0">
+        <br>
+        <label for="uptimeMultiplier">Uptime Çarpanı:</label>
+        <input type="number" id="uptimeMultiplier" name="uptimeMultiplier" step="0.01" value="1">
+        <br>
+        <label for="internetSpeed">İnternet Hızı:</label>
+        <select name="internetSpeed" id="internetSpeed">
+            <option value="0.5">10 Mbps’den az</option>
+            <option value="1">10 Mbps’den fazla</option>
+        </select>
+        <br>
+        <button type="button" onclick="calculatePoints()">Hesapla</button>
+    </form>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
