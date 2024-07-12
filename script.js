@@ -8,27 +8,33 @@ function calculatePoints() {
     const uptimeMultiplier = parseFloat(document.getElementById('uptimeMultiplier').value);
     const internetSpeed = parseFloat(document.getElementById('internetSpeed').value);
 
-    let points = ramSpeed * ramCapacity;
+    const referenceCores = 4;
+    const referenceClockSpeed = 2.5; // Example reference values
+    const referenceRAMCapacity = 8; // Example reference values
+    const referenceRAMSpeed = 2400; // Example reference values
 
+    let storageMultiplier;
     switch(hddType) {
         case 'hdd':
-            points += hddCapacity * 1;
+            storageMultiplier = 1;
             break;
         case 'ssd':
-            points += hddCapacity * 2;
+            storageMultiplier = 1.5;
             break;
         case 'nvme':
-            points += hddCapacity * 3;
+            storageMultiplier = 2;
             break;
     }
 
-    const referenceCores = 4;
-    const referenceClockSpeed = 2.5; // Example reference values
     const normalizedCPU = (cpuCores * cpuSpeed) / (referenceCores * referenceClockSpeed);
+    const normalizedRAM = (ramCapacity * ramSpeed) / (referenceRAMCapacity * referenceRAMSpeed);
 
-    points *= uptimeMultiplier;
-    points *= normalizedCPU;
-    points *= internetSpeed;
+    let cpuMultiplier = normalizedCPU < 10 ? 1 : 1.25;
+    let ramMultiplier = ramCapacity < 1 ? 1 : 1.25;
+
+    let allowedStoragePoints = Math.min(hddCapacity, 3000) * storageMultiplier;
+
+    let points = allowedStoragePoints * uptimeMultiplier * cpuMultiplier * ramMultiplier * internetSpeed;
 
     document.getElementById('result').innerText = `Toplam Puan: ${points}`;
 }
