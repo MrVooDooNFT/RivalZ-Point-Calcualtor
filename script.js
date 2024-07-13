@@ -1,40 +1,13 @@
-function calculatePoints() {
-    const ramSpeed = parseInt(document.getElementById('ramSpeed').value);
-    const ramCapacity = parseInt(document.getElementById('ramCapacity').value);
-    const hddType = document.getElementById('hddType').value;
-    const hddCapacity = parseInt(document.getElementById('hddCapacity').value);
-    const cpuCores = parseInt(document.getElementById('cpuCores').value);
-    const cpuSpeed = parseFloat(document.getElementById('cpuSpeed').value);
-    const uptimeMultiplier = parseFloat(document.getElementById('uptimeMultiplier').value);
-    const internetSpeed = parseFloat(document.getElementById('internetSpeed').value);
+function calculate() {
+    let cpuMultiplier = document.getElementById('cpu').value === '10_or_more' ? 1.25 : 1;
+    let ramMultiplier = document.getElementById('ram').value === 'more_than_1' ? 1.25 : 1;
 
-    const referenceCores = 4;
-    const referenceClockSpeed = 2.5; // Example reference values
-    const referenceRAMCapacity = 8; // Example reference values
-    const referenceRAMSpeed = 2400; // Example reference values
+    // AS constant value (this should be defined somewhere based on your requirement)
+    let AS = 1;  // Example value, change as needed
 
-    let storageMultiplier;
-    switch(hddType) {
-        case 'hdd':
-            storageMultiplier = 1;
-            break;
-        case 'ssd':
-            storageMultiplier = 1.5;
-            break;
-        case 'nvme':
-            storageMultiplier = 2;
-            break;
-    }
+    let result1 = AS * cpuMultiplier * ramMultiplier;
+    let result2 = result1 * 1.25;
 
-    const normalizedCPU = (cpuCores * cpuSpeed) / (referenceCores * referenceClockSpeed);
-    const normalizedRAM = (ramCapacity * ramSpeed) / (referenceRAMCapacity * referenceRAMSpeed);
-
-    let cpuMultiplier = normalizedCPU < 10 ? 1 : 1.25;
-    let ramMultiplier = ramCapacity < 1 ? 1 : 1.25;
-
-    let allowedStoragePoints = Math.min(hddCapacity, 3000) * storageMultiplier;
-
-    let points = allowedStoragePoints * uptimeMultiplier * cpuMultiplier * ramMultiplier * internetSpeed;
-
-    document.getElementById('result').innerText = `Toplam Puan: ${points}`;
+    document.getElementById('result1').innerText = result1.toFixed(2);
+    document.getElementById('result2').innerText = result2.toFixed(2);
 }
