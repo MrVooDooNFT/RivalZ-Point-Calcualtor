@@ -7,10 +7,10 @@ function calculatePoints() {
 
     const basePoints = ramMultiplier * cpuMultiplier * internetSpeedMultiplier * (diskCapacity / 10) * diskTypeMultiplier;
     const pointsFirst24Hours = Math.min(basePoints * 0.8, 450);
-    const pointsAfter24Hours = basePoints > 450 ? 562.5 : basePoints;
+    const pointsAfter24Hours = basePoints > 562.5 ? 562.5 : basePoints;
 
-    const resultMessage = basePoints > 450 ? 
-        `Due to the maximum point limit, your points will be capped at 450.` :
+    const resultMessage = basePoints * 0.8 > 450 ? 
+        `Due to the maximum point limit, your points for the first 24 hours will be capped at 450.` :
         ``;
 
     document.getElementById('result').innerHTML = `
