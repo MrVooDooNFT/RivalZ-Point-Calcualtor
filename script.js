@@ -6,10 +6,11 @@ function calculatePoints() {
     const diskCapacity = parseFloat(document.getElementById('diskCapacity').value);
 
     const basePoints = ramMultiplier * cpuMultiplier * internetSpeedMultiplier * (diskCapacity / 10) * diskTypeMultiplier;
-    const pointsAfter24Hours = basePoints * 1.25;
+    const pointsFirst24Hours = basePoints * 0.8;
+    const pointsAfter24Hours = basePoints;
 
     document.getElementById('result').innerHTML = `
-        İlk 24 saat clientiniz saatlik <strong>${basePoints.toFixed(2)}</strong> puan alacaktır, 
-        24 saat sonunda puanınız <strong>${pointsAfter24Hours.toFixed(2)}</strong> puana yükselecektir.
+        For the first 24 hours, your client will earn <strong>${pointsFirst24Hours.toFixed(2)}</strong> points per hour. 
+        After 24 hours, your points will be <strong>${pointsAfter24Hours.toFixed(2)}</strong> points per hour.
     `;
 }
