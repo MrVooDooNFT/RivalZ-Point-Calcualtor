@@ -1,42 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Hardware Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Hardware Puan Hesaplayıcı</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Simple Hardware Calculator</h1>
-        <form id="calculator-form">
-            <label for="disk">Select Disk Type:</label>
-            <select id="disk" name="disk">
-                <option value="HDD">HDD</option>
-                <option value="SSD">SSD</option>
-                <option value="NVMe">NVMe</option>
-            </select>
-            <p>(Even though VPSs provide service at SSD or NVMe speed, the system recognizes it as HDD and calculates accordingly. Therefore, if you are using a VPS, select HDD.)</p>
+    <h1>Hardware Puan Hesaplayıcı</h1>
+    <form id="calcForm">
+        <label for="ram">RAM:</label>
+        <select name="ram" id="ram">
+            <option value="1">1 GB ve daha az</option>
+            <option value="1.5">1 GB üzeri</option>
+        </select>
+        <br>
+        <label for="cpu">İşlemci:</label>
+        <select name="cpu" id="cpu">
+            <option value="1">10 çekirdek altı</option>
+            <option value="1.5">10 çekirdek ve üzeri</option>
+        </select>
+        <br>
+        <label for="internetSpeed">İnternet Hızı:</label>
+        <select name="internetSpeed" id="internetSpeed">
+            <option value="1">10 Mbps altı</option>
+            <option value="1.5">10 Mbps ve üzeri</option>
+        </select>
+        <br>
+        <label for="diskType">Disk Tipi:</label>
+        <select name="diskType" id="diskType">
+            <option value="1">HDD</option>
+            <option value="1.5">SSD</option>
+            <option value="2">NVMe</option>
+        </select>
+        <br>
+        <label for="diskCapacity">Disk Kapasitesi (GB):</label>
+        <input type="number" id="diskCapacity" name="diskCapacity" min="0">
+        <br>
+        <button type="button" onclick="calculatePoints()">Hesapla</button>
+    </form>
+    <p id="result"></p>
 
-            <label for="cpu">How many CPU cores do you have?</label>
-            <select id="cpu" name="cpu">
-                <option value="less_than_10">Less than 10</option>
-                <option value="10_or_more">10 or more</option>
-            </select>
-
-            <label for="ram">How much RAM do you have?</label>
-            <select id="ram" name="ram">
-                <option value="1_or_less">1GB or less</option>
-                <option value="more_than_1">More than 1GB</option>
-            </select>
-
-            <button type="button" onclick="calculate()">Calculate</button>
-        </form>
-        <div id="result">
-            <p>In the first 24 hours, your client will generate an hourly income of: <span id="result1"></span></p>
-            <p>In the next 24 hours, it will generate: <span id="result2"></span></p>
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
