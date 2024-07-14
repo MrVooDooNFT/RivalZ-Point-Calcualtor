@@ -6,9 +6,8 @@ function calculatePoints() {
     const diskCapacity = parseFloat(document.getElementById('diskCapacity').value);
 
     const basePoints = ramMultiplier * cpuMultiplier * internetSpeedMultiplier * (diskCapacity / 10) * diskTypeMultiplier;
-    const pointsFirst24Hours = basePoints > 450 ? 450 * 0.8 : basePoints * 0.8;
-    const cappedBasePoints = basePoints > 450 ? 450 : basePoints;
-    const pointsAfter24Hours = cappedBasePoints * 1.25;
+    const pointsFirst24Hours = Math.min(basePoints * 0.8, 450);
+    const pointsAfter24Hours = basePoints > 450 ? 562.5 : basePoints;
 
     const resultMessage = basePoints > 450 ? 
         `Due to the maximum point limit, your points will be capped at 450.` :
