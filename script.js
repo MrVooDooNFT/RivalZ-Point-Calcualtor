@@ -1,13 +1,15 @@
-function calculate() {
-    let cpuMultiplier = document.getElementById('cpu').value === '10_or_more' ? 1.25 : 1;
-    let ramMultiplier = document.getElementById('ram').value === 'more_than_1' ? 1.25 : 1;
+function calculatePoints() {
+    const ramMultiplier = parseFloat(document.getElementById('ram').value);
+    const cpuMultiplier = parseFloat(document.getElementById('cpu').value);
+    const internetSpeedMultiplier = parseFloat(document.getElementById('internetSpeed').value);
+    const diskTypeMultiplier = parseFloat(document.getElementById('diskType').value);
+    const diskCapacity = parseFloat(document.getElementById('diskCapacity').value);
 
-    // AS constant value (this should be defined somewhere based on your requirement)
-    let AS = 1;  // Example value, change as needed
+    const basePoints = ramMultiplier * cpuMultiplier * internetSpeedMultiplier * (diskCapacity / 10) * diskTypeMultiplier;
+    const pointsAfter24Hours = basePoints * 1.25;
 
-    let result1 = AS * cpuMultiplier * ramMultiplier;
-    let result2 = result1 * 1.25;
-
-    document.getElementById('result1').innerText = result1.toFixed(2);
-    document.getElementById('result2').innerText = result2.toFixed(2);
+    document.getElementById('result').innerHTML = `
+        İlk 24 saat clientiniz saatlik <strong>${basePoints.toFixed(2)}</strong> puan alacaktır, 
+        24 saat sonunda puanınız <strong>${pointsAfter24Hours.toFixed(2)}</strong> puana yükselecektir.
+    `;
 }
