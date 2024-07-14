@@ -3,15 +3,27 @@
 <head>
     <title>RivalZ Point Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
 </head>
 <body>
-    <img src="logo.jpg" alt="Logo" width="500" height="500">
     <h1>RivalZ Point Calculator by Mr VooDoo</h1>
+    <img src="logo.jpg" alt="Logo" width="500" height="500">
     <form id="calcForm">
         <label for="ram">RAM:</label>
         <select name="ram" id="ram">
-            <option value="1">1 GB or less</option>
-            <option value="1.25">More than 1 GB</option>
+            <option value="1">Less than 1 GB</option>
+            <option value="1.25">1 GB or more</option>
         </select>
         <br>
         <label for="cpu">CPU:</label>
