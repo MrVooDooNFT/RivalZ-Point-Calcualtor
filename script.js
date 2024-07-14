@@ -6,19 +6,17 @@ function calculatePoints() {
     const diskCapacity = parseFloat(document.getElementById('diskCapacity').value);
 
     const basePoints = ramMultiplier * cpuMultiplier * internetSpeedMultiplier * (diskCapacity / 10) * diskTypeMultiplier;
-    const pointsFirst24Hours = basePoints * 0.8;
-    const pointsAfter24Hours = basePoints;
-
-    const cappedPointsFirst24Hours = basePoints > 450 ? 450 * 0.8 : pointsFirst24Hours;
-    const cappedPointsAfter24Hours = basePoints > 450 ? 450 : pointsAfter24Hours;
+    const cappedBasePoints = basePoints > 450 ? 450 : basePoints;
+    const pointsFirst24Hours = cappedBasePoints * 0.8;
+    const pointsAfter24Hours = cappedBasePoints * 1.25;
 
     const resultMessage = basePoints > 450 ? 
         `Due to the maximum point limit, your points will be capped at 450.` :
         ``;
 
     document.getElementById('result').innerHTML = `
-        For the first 24 hours, your client will earn <strong>${cappedPointsFirst24Hours.toFixed(2)}</strong> points per hour. 
-        After 24 hours, your points will be <strong>${cappedPointsAfter24Hours.toFixed(2)}</strong> points per hour.
+        For the first 24 hours, your client will earn <strong>${pointsFirst24Hours.toFixed(2)}</strong> points per hour. 
+        After 24 hours, your points will be <strong>${pointsAfter24Hours.toFixed(2)}</strong> points per hour.
         <br>${resultMessage}
     `;
 }
