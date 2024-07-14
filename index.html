@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hardware Puan Hesaplayıcı</title>
+    <title>Hardware Points Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Hardware Puan Hesaplayıcı</h1>
+    <h1>Hardware Points Calculator</h1>
     <form id="calcForm">
         <label for="ram">RAM:</label>
         <select name="ram" id="ram">
-            <option value="1">1 GB ve daha az</option>
-            <option value="1.25">1 GB üzeri</option>
+            <option value="1">1 GB or less</option>
+            <option value="1.25">More than 1 GB</option>
         </select>
         <br>
-        <label for="cpu">İşlemci:</label>
+        <label for="cpu">CPU:</label>
         <select name="cpu" id="cpu">
-            <option value="1">10 çekirdek altı</option>
-            <option value="1.25">10 çekirdek ve üzeri</option>
+            <option value="1">Less than 10 cores</option>
+            <option value="1.25">10 cores or more</option>
         </select>
         <br>
-        <label for="internetSpeed">İnternet Hızı:</label>
+        <label for="internetSpeed">Internet Speed:</label>
         <select name="internetSpeed" id="internetSpeed">
-            <option value="1">10 Mbps altı</option>
-            <option value="1.25">10 Mbps ve üzeri</option>
+            <option value="1">Less than 10 Mbps</option>
+            <option value="1.25">10 Mbps or more</option>
         </select>
         <br>
-        <label for="diskType">Disk Tipi:</label>
+        <label for="diskType">Disk Type:</label>
         <select name="diskType" id="diskType">
             <option value="1">HDD</option>
             <option value="1.5">SSD</option>
             <option value="2">NVMe</option>
         </select>
+        <span>(If you are using a VPS, always select HDD regardless of your disk type as VPS disks are treated as HDD)</span>
         <br>
-        <label for="diskCapacity">Disk Kapasitesi (GB):</label>
+        <label for="diskCapacity">Disk Capacity (GB):</label>
         <input type="number" id="diskCapacity" name="diskCapacity" min="0">
         <br>
-        <button type="button" onclick="calculatePoints()">Hesapla</button>
+        <button type="button" onclick="calculatePoints()">Calculate</button>
     </form>
     <p id="result"></p>
 
